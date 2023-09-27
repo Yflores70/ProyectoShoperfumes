@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+
+        <form action="{% url 'agregar-avatar' %}" enctype="multipart/form-data" method="post">{% csrf_token %}
+
+            {{miFomulario.as_p}}
+
+            <button type="submit">Guardar</button>
+        </form>
+
+
+{% endblock %}

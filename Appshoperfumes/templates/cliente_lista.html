@@ -1,0 +1,45 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <section class="bg0 p-t-75 p-b-120">
+        <div class="container">
+            <div class="row p-b-148">
+                <div class="col-md-7 col-lg-8">
+                <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+
+
+
+                    <h1>Lista de Clientes</h1>
+
+                    <ul>
+                        
+                        {% for cliente in clientes %}
+
+                            <li>
+                                <p> Nombre: {{cliente.nombre}} </p>
+                                    <button>
+                                        <a href="{% url 'detalle-clientes' cliente.id %}">Ver</a>
+                                    </button>
+
+                                    <button>
+                                        <a href="{% url 'actualiza-clientes' cliente.id %}">Actualizar</a>
+                                    </button>
+
+                                    <form action= "{% url 'elimina-clientes' cliente.id %}" method="get">
+                                        <button type= "submit">Eliminar</button>
+                                    </form>
+                            </li>
+                            
+                        {% endfor %}
+                            
+                    </ul>
+                    <a href="{% url 'crea-clientes'%}">Crear Cliente</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+

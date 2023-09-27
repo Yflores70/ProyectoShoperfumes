@@ -1,0 +1,42 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+	<section class="bg0 p-t-75 p-b-120">
+		<div class="container">
+			<div class="row p-b-148">
+				<div class="col-md-7 col-lg-8">
+					<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+						<h3 class="mtext-111 cl2 p-b-16">
+							Acerca de mi
+						</h3>
+
+						<p class="stext-113 cl6 p-b-26">	
+							Este proyecto nacio el 2023, fruto del gusto, la pasión y el conocimiento que he adquirido en el sector de la perfumería y con el objetivo de ofrecer a los clientes una tienda abierta las 24 horas del día, durante todos los días del año, donde los clientes puedan disfrutar de las mejores marcas y productos originales del mercado en el sector de la perfumería.
+                        </p>
+
+						<p class="stext-113 cl6 p-b-26">
+							Gracias a la combinación de la experiencia en comercio de perfumes, así como en logística, distribución y comercio electrónico, asegurar una gestión profesional y de confianza en los pedidos, con plazos de entrega mínimos y siempre con la calidad como norma del servicio.
+						</p>
+
+						<p class="stext-113 cl6 p-b-26">
+							Cada día alcanzado una notable reputación dentro del sector con productos de calidad y variedad, invirtiendo constantemente además en procesos de mejora y soluciones que redunden en beneficio de los clientes y su satisfacción.
+						</p>						<p class="stext-113 cl6 p-b-26">
+							Gracias al ahorro de costes que supone contar con una gran tienda virtual, y como profesional del comercio electrónico, se pueden adquirir estos productos con grandes descuentos, llegando en  algunos casos hasta un 40 %, con respectos a otras tiendas.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+					<div class="how-bor1 ">
+						<div class="hov-img0">
+							<img src="{% static 'images/about-01.jpg' %}" style="max-width: 100%;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>	
+
+
+{% endblock %}

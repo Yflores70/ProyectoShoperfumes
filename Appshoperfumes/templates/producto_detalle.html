@@ -1,0 +1,8 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Vista detalle del Producto</h1>
+    <p>Producto:{{productos.nombre}}, Precio:{{productos.precio}}</p>
+
+{% endblock %}

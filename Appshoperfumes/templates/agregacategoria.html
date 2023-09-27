@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Agrega Categorias de los Productos</h1>
+        <form action="{% url 'agregar-categorias' %}" method="post">{% csrf_token %}
+
+            {{miFormulariocategoria.as_table}}
+
+            <button type="submit">Enviar</button>
+        </form>
+
+{% endblock %}
+

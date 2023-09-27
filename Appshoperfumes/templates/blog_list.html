@@ -1,0 +1,59 @@
+
+{% extends 'padre.html' %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <section class="bg0 p-t-75 p-b-120">
+      <div class="container">
+        <div class="row p-b-148">
+          <div class="col-md-7 col-lg-8">
+            <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+              <h3 class="mtext-111 cl2 p-b-16">
+                ¡Bienvenido al blog de shoperfumes!
+              </h3>
+
+              <p class="stext-113 cl6 p-b-26">	
+                Aquí encontrarás un mundo fragante lleno de aromas exquisitos, notas cautivadoras y secretos de la perfumería. Sumérgete en el fascinante universo de los perfumes y descubre todo lo que necesitas saber sobre esta forma de arte olfativo.
+                          </p>
+
+              <p class="stext-113 cl6 p-b-26">
+                Este blog de perfumes te invita a explorar una amplia gama de temas relacionados con fragancias, desde reseñas detalladas de perfumes populares hasta guías de compra, consejos de aplicación y noticias de la industria. Te sumergirás en las notas de salida, corazón y base de las fragancias más reconocidas, descubrirás las diferencias entre las familias olfativas y aprenderás a elegir la fragancia perfecta para cada ocasión.
+              </p>
+
+              <p class="stext-113 cl6 p-b-26">
+                Además, como expertos en perfumes se te llevará a un viaje sensorial a través de historias intrigantes sobre la creación de perfumes, los ingredientes más exóticos y las tendencias emergentes en el mundo de la perfumería. Te mantendremos al tanto de los lanzamientos más recientes
+              </p>						<p class="stext-113 cl6 p-b-26">
+                Ya seas un apasionado de los perfumes, un coleccionista o simplemente alguien que busca encontrar su fragancia única, nuestro blog está diseñado para inspirarte, educarte y despertar tu amor por las esencias. Te invitamos a sumergirte en nuestras publicaciones, dejar tus comentarios y compartir tus propias experiencias y descubrimientos olfativos.
+              </p>
+            </div>
+          </div>
+
+      <ul>
+        {% for blogs in blog %}
+          <li>
+            <h2>{{ blogs.titulo }}</h2>
+            <p>{{ blogs.subtitulo }}</p>
+            <p>Autor: {{ blogs.autor }}</p>
+            <p>Fecha: {{ blogs.fecha }}</p>
+            <img src="{{ blogs.imagen.url }}" alt="Blog Image">
+            
+            <div class="button-group">
+              <button class="custom-button">
+                <a href="{% url 'detalle-blogs' blogs.id %}">Leer Más</a>
+              </button>
+              <button class="custom-button">
+                <a href="{% url 'actualiza-blogs' blogs.id %}">Actualizar</a>
+              </button>
+              <form action="{% url 'elimina-blogs' blogs.id %}" method="get" class="d-inline">
+                <button class="custom-button" type="submit">Eliminar</button>
+              </form>
+            </div>
+
+          </li>
+        {% endfor %}
+
+      
+      </ul>
+      <a href="{% url 'crea-blogs'%}">Crear Blog</a>
+{% endblock %}

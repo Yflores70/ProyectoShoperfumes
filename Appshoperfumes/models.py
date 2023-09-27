@@ -36,3 +36,20 @@ class Avatar(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='avatares', blank=True, null=True) #donde se gestionara la imagen
+
+    def __str__(self):
+        return str(self.user)
+    
+
+from django.db import models
+
+class Blog(models.Model):
+    titulo = models.CharField(max_length=100)
+    subtitulo = models.CharField(max_length=200)
+    cuerpo = models.TextField()
+    autor = models.CharField(max_length=100)
+    fecha = models.DateField()
+    imagen = models.ImageField(upload_to='blog_images')
+
+    def __str__(self):
+        return self.titulo

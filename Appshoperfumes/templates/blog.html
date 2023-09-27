@@ -1,0 +1,87 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+	<section class="bg0 p-t-75 p-b-120">
+		<div class="container">
+			<div class="row p-b-148">
+				<div class="col-md-7 col-lg-8">
+					<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+						<h3 class="mtext-111 cl2 p-b-16">
+							¡Bienvenido al blog de shoperfumes!
+						</h3>
+
+						<p class="stext-113 cl6 p-b-26">	
+							Aquí encontrarás un mundo fragante lleno de aromas exquisitos, notas cautivadoras y secretos de la perfumería. Sumérgete en el fascinante universo de los perfumes y descubre todo lo que necesitas saber sobre esta forma de arte olfativo.
+                        </p>
+
+						<p class="stext-113 cl6 p-b-26">
+							Este blog de perfumes te invita a explorar una amplia gama de temas relacionados con fragancias, desde reseñas detalladas de perfumes populares hasta guías de compra, consejos de aplicación y noticias de la industria. Te sumergirás en las notas de salida, corazón y base de las fragancias más reconocidas, descubrirás las diferencias entre las familias olfativas y aprenderás a elegir la fragancia perfecta para cada ocasión.
+						</p>
+
+						<p class="stext-113 cl6 p-b-26">
+							Además, como expertos en perfumes se te llevará a un viaje sensorial a través de historias intrigantes sobre la creación de perfumes, los ingredientes más exóticos y las tendencias emergentes en el mundo de la perfumería. Te mantendremos al tanto de los lanzamientos más recientes
+						</p>						<p class="stext-113 cl6 p-b-26">
+							Ya seas un apasionado de los perfumes, un coleccionista o simplemente alguien que busca encontrar su fragancia única, nuestro blog está diseñado para inspirarte, educarte y despertar tu amor por las esencias. Te invitamos a sumergirte en nuestras publicaciones, dejar tus comentarios y compartir tus propias experiencias y descubrimientos olfativos.
+						</p>
+					</div>
+				</div>
+
+
+				<div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+					<div class="how-bor1 ">
+						<div class="hov-img0">
+							<img src="{% static 'images/blog-000.jpg' %}" style="max-width: 100%;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>	
+		<!-- Start Blog Section -->
+		<div class="blog-section">
+			<div class="container">
+				
+				<div class="row">
+
+					<div class="col-12 col-sm-6 col-md-4 mb-5">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">First Time Home Owner Ideas</a></h3>
+								<div class="meta">
+									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-6 col-md-4 mb-5">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
+								<div class="meta">
+									<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-6 col-md-4 mb-5">
+						<div class="post-entry">
+							<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
+							<div class="post-content-entry">
+								<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
+								<div class="meta">
+									<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Blog Section -->	
+
+{% endblock %}

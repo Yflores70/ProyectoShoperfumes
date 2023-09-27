@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+
+        <form action="{% url 'edita-perfil' %}" method="post">{% csrf_token %}
+
+            {{miFomulario.as_p}}
+
+            <button type="submit">Actualizar</button>
+        </form>
+
+
+{% endblock %}

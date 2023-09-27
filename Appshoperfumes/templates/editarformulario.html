@@ -1,0 +1,14 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+
+        <form action="{% url 'editar-clientes'  id %}" method="post">{% csrf_token %}
+
+            {{miFormulario.as_table}}
+
+            <button type="submit">Actualizar</button>
+        </form>
+
+
+{% endblock %}

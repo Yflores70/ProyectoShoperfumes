@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Elimina Productos</h1>
+    <form method="post">{% csrf_token %}
+
+        <p>Está seguro de eliminar el producto?</p>
+
+        <button type="submit">Confirmar</button>
+        <button><a href="{% url 'inicio' %}">Cancelar</a></button>
+        
+    </form>
+
+
+{% endblock %}

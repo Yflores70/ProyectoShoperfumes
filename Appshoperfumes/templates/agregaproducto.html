@@ -1,0 +1,13 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Agrega Productos</h1>
+        <form action="{% url 'agregar-productos' %}" method="post">{% csrf_token %}
+
+            {{miFormularioproducto.as_table}}
+
+            <button type="submit">Enviar</button>
+        </form>
+
+{% endblock %}

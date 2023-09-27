@@ -1,0 +1,15 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Crear Clientes</h1>
+        <form method="post">
+
+            {% csrf_token %}
+            {{form.as_table}}
+            <button type="submit">Crear</button>
+            
+        </form>
+
+
+{% endblock %}

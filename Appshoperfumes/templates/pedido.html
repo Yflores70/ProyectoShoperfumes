@@ -1,0 +1,17 @@
+{% extends 'padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Lista Pedidos</h1>
+
+    <ul>
+        
+        {% for pedido in lista_pedidos %}
+            <li>{{pedido.nombre}}</li>
+        {% endfor %}
+            
+
+    </ul>
+
+
+{% endblock %}

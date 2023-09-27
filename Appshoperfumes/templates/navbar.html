@@ -1,0 +1,46 @@
+{% load static %}
+<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'inicio' %}">Shoperfumes</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsFurni">
+            <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                <li><a class="nav-link" href="shop.html">Shop</a></li>
+                <li><a class="nav-link" href="{% url 'acerca-de-mí' %}">Acerca de mí</a></li>
+                <li><a class="nav-link" href="services.html">Services</a></li>
+                <li><a class="nav-link" href="{% url 'lista-blogs' %}">Blog</a></li>S
+                <li><a class="nav-link" href="{% url 'contacto' %}">Escríbenos</a></li>
+                <li><a class="nav-link" href="{% url 'inicio' %}">Inicio</li>
+                <li><a class="nav-link" href="{% url 'clientes' %}">Clientes</li>
+                <li><a class="nav-link" href="{% url 'categorias' %}">Categorias</li>
+                <li><a class="nav-link" href="{% url 'productos' %}">Productos</li>
+            </ul>
+
+            <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+                <li><a class="nav-link" href="{% url 'login' %}"><img src="{% static 'images/user.svg' %}"></a></li>
+                <li><a class="nav-link" href="cart.html"><img src="{% static 'images/cart.svg' %}"></a></li>
+            </ul>
+        </div>
+
+        {% if user.is_authenticated %}
+            
+            {% if url %}
+                <img src="{{url}}" height="30px" alt="avatar">
+            {% endif %}
+            
+            <p>Bienvenido {{user.username}}</p>
+            <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+        {% endif %}
+
+
+    </div>
+        
+</nav>
