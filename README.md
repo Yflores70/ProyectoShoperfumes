@@ -2,9 +2,9 @@
 Autor:Yuleidimar Flores
 Aplicacion: Shoperfumes
 Version: 1.0.0
-Proyecto de desarrollo de aplicacion de blogs y venta de perfumes.
+Proyecto de desarrollo de aplicacion de blogs de perfumes.
 
-Tecnologias Utilizadas:
+Tecnologías Utilizadas:
 Python
 Framework: Django
 Base de Datos: Sqlite3
@@ -15,5 +15,15 @@ CSS3
 Paginas:
 -Inicio
 -Blog
--Sobre mí
--Escribenos
+-Acerca de mí
+-Contacto
+-Productos
+-clientes
+
+Cruds realizados:
+Blog
+Productos
+clientes
+
+
+
