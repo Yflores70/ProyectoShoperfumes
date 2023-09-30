@@ -2,16 +2,22 @@
 {% load static %}
 {% block contenidoQueCambia %}
 <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Lista Productos</h1>
+    <section class="bg0 p-t-75 p-b-120">
+        <div class="container">
+            <div class="row p-b-148">
+                <div class="col-md-7 col-lg-8">
+                    <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                        <h1>Lista de Productos</h1>
 
-    <ul>
-        
-        {% for producto in lista_productos %}
-            <li>{{producto.nombre}}</li>
-        {% endfor %}
-            
-
-    </ul>
-
+                        <ul>       
+                            {% for producto in lista_productos %}
+                                <li>{{producto.nombre}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

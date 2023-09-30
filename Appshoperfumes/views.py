@@ -1,14 +1,45 @@
-from django.shortcuts import render
+from django.shortcuts import render, render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpRequest
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.mixins import LoginRequiredMixin  #BASADA EN CLASES
+from django.contrib.auth.mixins import LoginRequiredMixin#BASADA EN CLASES
 from django.contrib.auth.decorators import login_required  #BASADA EN FUNCIONES
-from .models import Categoria, Cliente, Producto, Pedido, Avatar
-from .forms import  AvatarFormulario, AgregaCategoriaFormulario, AgregaProductoFormulario, ClienteFormulario, UserEditForm
+from .models import Categoria, Cliente, Producto, Pedido, Avatar, Blog
+from .forms import  AvatarFormulario, AgregaCategoriaFormulario, AgregaProductoFormulario, ClienteFormulario, UserRegisterForm, UserEditForm
+
+
+
+class BlogList(ListView):
+    model = Blog
+    template_name = 'blog_list.html'
+    context_object_name = 'blog'
+
+class BlogDetail(DetailView):
+    model = Blog
+    template_name = 'blog_detail.html'
+    context_object_name = 'blog'
+
+class BlogCreate(LoginRequiredMixin,CreateView):
+    model = Blog
+    template_name = 'blog_form.html'
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'autor', 'fecha', 'imagen']
+
+class BlogUpdate(LoginRequiredMixin,UpdateView):
+    model = Blog
+    template_name = 'blog_update.html'
+    success_url = '/app-shoperfumes/'
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'autor', 'fecha', 'imagen']
+
+class BlogDelete(LoginRequiredMixin,DeleteView):
+    model = Blog
+    template_name = 'blog_delete.html'
+    success_url = '/app-shoperfumes/'
+
+
+
 
 
 def categoria(req,nombre):
@@ -60,6 +91,7 @@ def producto(req,nombre):
 def lista_productos(req):
     lista = Producto.objects.all()
     return render(req, "producto.html", {"lista_productos":lista})
+
 
 def agregarproducto(req: HttpRequest):
     print('method', req.method)
@@ -183,24 +215,24 @@ class ProductoList(ListView):
     template_name = "producto_lista.html"
     context_object_name = "productos"
 
-class ProductoDetail(LoginRequiredMixin,DetailView):
+class ProductoDetail(DetailView):
     model = Producto
     template_name = "producto_detalle.html"
     context_object_name = "productos"
 
-class ProductoCreate(CreateView):
+class ProductoCreate(LoginRequiredMixin,CreateView):
     model = Producto
     template_name = "producto_create.html"
     fields = ('__all__')
     success_url = '/app-shoperfumes/'
 
-class ProductoUpdate(UpdateView):
+class ProductoUpdate(LoginRequiredMixin,UpdateView):
     model = Producto
     template_name = "producto_update.html"
-    fields = ['nombre']
+    fields = ['nombre', 'precio', 'imagen']
     success_url = '/app-shoperfumes/'
 
-class ProductoDelete(DeleteView):
+class ProductoDelete(LoginRequiredMixin,DeleteView):
     model = Producto
     template_name =  "producto_delete.html"
     success_url = '/app-shoperfumes/'
@@ -208,31 +240,32 @@ class ProductoDelete(DeleteView):
 
 #CLASES BASADA EN VISTAS, CLIENTES
 
-class ClienteList(ListView):
+class ClienteList(LoginRequiredMixin,ListView):
     model = Cliente
     template_name = "cliente_lista.html"
     context_object_name = "clientes"
 
-class ClienteDetail(DetailView):
+class ClienteDetail(LoginRequiredMixin,DetailView):
     model = Cliente
     template_name = "cliente_detalle.html"
     context_object_name = "clientes"
 
-class ClienteCreate(CreateView):
+class ClienteCreate(LoginRequiredMixin,CreateView):
     model = Cliente
     success_url = '/app-shoperfumes/'
     fields = ['nombre']
 
-class ClienteUpdate(UpdateView):
+class ClienteUpdate(LoginRequiredMixin,UpdateView):
     model = Cliente
     template_name = "cliente_update.html"
     success_url = '/app-shoperfumes/'
-    fields = ['nombre']
+    fields = ['nombre', 'correo','direccion']
 
-class ClienteDelete(DeleteView):
+class ClienteDelete(LoginRequiredMixin,DeleteView):
     model = Cliente
     template_name =  "cliente_delete.html"
     success_url = '/app-shoperfumes/'
+
 
 #VITA LOGIN USUARIO
 def UsuarioLogin(req):
@@ -247,40 +280,47 @@ def UsuarioLogin(req):
 
             user = authenticate(username= usuario, password=contraseña)
 
-            if user is not None:
+            if user:
                 login(req, user)
+                        # Obtén el avatar del usuario
+                try:
+                    avatar = Avatar.objects.get(user=req.user.id)
+                except:
+                    avatar = None
 
-                return render(req, "inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+                return render(req, "inicio.html", {"mensaje": f"Bienvenido {usuario}", "avatar": avatar})
             else:
-                return render(req, "inicio.html", {"mensaje":"Datos incorrectos"})
-           
+                return render(req, "inicio.html", {"mensaje":"Datos incorrectos"})   
+             
         else:
+            return render(req, "inicio.html", {"mensaje":"Formulario Inválido"})
+        
+    else:
+        form = AuthenticationForm()
+        return render(req, "login.html", {"form": form})
 
-            return render(req, "inicio.html", {"mensaje":"Formulario erroneo"})
-
-    form = AuthenticationForm()
-
-    return render(req, "login.html", {"form": form})
 
 # VISTA REGISTRO DE USUARIO
 def UsuarioRegistro(req):
 
       if req.method == 'POST':
 
-            form = UserCreationForm(req.POST)
-            #form = UserRegisterForm(request.POST)
+            #form = UserCreationForm(req.POST)
+            form = UserRegisterForm(req.POST)
             if form.is_valid():
 
-                  data = form.cleaned_data ["username"]
-                  usuario= data["Username"]
+                  data= form.cleaned_data
+                  usuario = data ["username"]
+                 
                   form.save()
-                  return render(req,"inicio.html" ,  {"mensaje":"Usuario {usuario} Creado!"})
+                  return render(req,"inicio.html" ,  {"mensaje":"Usuario Creado con Éxito!"})
 
       else:
-            form = UserCreationForm()       
-            #form = UserRegisterForm()     
+            #form = UserCreationForm()       
+            form = UserRegisterForm()     
 
       return render(req,"registro.html" ,  {"form":form})
+
 
 
 #EDITAR PERFIL DEL USUARIO
@@ -340,34 +380,3 @@ def Acercademí(req):
 
 def Escribenos(req):
     return render(req, "contacto.html")
-
-def Blog(req):
-    return render(req, "blog.html")
-
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Blog
-
-class BlogList(ListView):
-    model = Blog
-    template_name = 'blog_list.html'
-    context_object_name = 'blog'
-    
-class BlogDetail(DetailView):
-    model = Blog
-    template_name = 'blog_detail.html'
-    context_object_name = 'blog'
-
-class BlogCreate(CreateView):
-    model = Blog
-    template_name = 'blog_form.html'
-    fields = ['titulo', 'subtitulo', 'cuerpo', 'autor', 'fecha', 'imagen']
-
-class BlogUpdate(UpdateView):
-    model = Blog
-    template_name = 'blog_update.html'
-    fields = ['titulo', 'subtitulo', 'cuerpo', 'autor', 'fecha', 'imagen']
-
-class BlogDelete(DeleteView):
-    model = Blog
-    template_name = 'blog_delete.html'
-    success_url = '/app-shoperfumes/'    

@@ -31,9 +31,9 @@ a {
     font-weight: 600; }
 
 .custom-navbar {
-  background: #3b5d50 !important;
+  background: #20d3d8 !important;
   padding-top: 20px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;}
   .custom-navbar .navbar-brand {
     font-size: 32px;
     font-weight: 600; }
@@ -56,7 +56,7 @@ a {
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease;
-    position: relative; }
+    position: relative;}
     @media (min-width: 768px) {
       .custom-navbar .custom-navbar-nav li a:before {
         content: "";
@@ -95,8 +95,19 @@ a {
       .custom-navbar .custom-navbar-cta li:first-child {
         margin-right: 20px; }
 
+        .submenu {
+          display: none;
+        }
+        
+        li:hover .submenu {
+          display: block;
+        }
+
 .hero {
-  background:#000000;
+  background-image: url('../images/couch.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background:#000000;*/
   padding: calc(4rem - 30px) 0 0rem 0; }
   @media (min-width: 768px) {
     .hero {
@@ -174,8 +185,8 @@ a {
     -webkit-box-shadow: none;
     box-shadow: none; }
   .btn.btn-primary {
-    background: #3b5d50;
-    border-color: #3b5d50; }
+    background: #20d3d8 ;
+    border-color: #20d3d8 ; }
     .btn.btn-primary:hover {
       background: #314d43;
       border-color: #314d43; }
@@ -374,7 +385,7 @@ a {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      border: 2px solid #3b5d50;
+      border: 2px solid #20d3d8 ;
       position: absolute;
       left: 0;
       top: 8px; }
@@ -462,7 +473,7 @@ a {
       -o-transition: .3s all ease;
       transition: .3s all ease; }
       .testimonial-slider-wrap #testimonial-nav > span:hover {
-        background: #3b5d50;
+        background: #20d3d8 ;
         color: #ffffff; }
     .testimonial-slider-wrap #testimonial-nav .prev {
       left: -10px; }
@@ -502,7 +513,7 @@ a {
         transition: .3s all ease;
         background-color: #d6d6d6; }
       .testimonial-slider-wrap .tns-nav button:hover:before, .testimonial-slider-wrap .tns-nav button.tns-nav-active:before {
-        background-color: #3b5d50; }
+        background-color: #20d3d8 ; }
 
 .before-footer-section {
   padding: 7rem 0 12rem 0 !important; }
@@ -559,7 +570,7 @@ a {
     .footer-section .subscription-form h3 {
       font-size: 18px;
       font-weight: 500;
-      color: #3b5d50; }
+      color: #20d3d8 ; }
     .footer-section .subscription-form .form-control {
       height: 50px;
       border-radius: 10px;
@@ -568,7 +579,7 @@ a {
         outline: none;
         -webkit-box-shadow: none;
         box-shadow: none;
-        border-color: #3b5d50;
+        border-color: #20d3d8 ;
         -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
         box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2); }
       .footer-section .subscription-form .form-control::-webkit-input-placeholder {
@@ -599,7 +610,7 @@ a {
     font-size: 32px;
     font-weight: 500;
     text-decoration: none;
-    color: #3b5d50; }
+    color: #20d3d8; }
   .footer-section .custom-social li {
     margin: 2px;
     display: inline-block; }
@@ -610,10 +621,10 @@ a {
       line-height: 40px;
       display: inline-block;
       background: #dce5e4;
-      color: #3b5d50;
+      color: #20d3d8 ;
       border-radius: 50%; }
       .footer-section .custom-social li a:hover {
-        background: #3b5d50;
+        background: #20d3d8 ;
         color: #ffffff; }
   .footer-section .border-top {
     border-color: #dce5e4; }
@@ -631,7 +642,7 @@ a {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border-color: #3b5d50;
+    border-color: #20d3d8 ;
     -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2); }
   .form-control::-webkit-input-placeholder {
@@ -653,7 +664,7 @@ a {
     height: 50px;
     line-height: 50px;
     text-align: center;
-    background: #3b5d50;
+    background: #20d3d8 ;
     margin-right: 20px;
     color: #ffffff; }
 
@@ -679,7 +690,7 @@ textarea {
     vertical-align: middle;
     color: rgba(0, 0, 0, 0.8); }
   .site-blocks-table tbody tr:first-child td {
-    border-top: 1px solid #3b5d50 !important; }
+    border-top: 1px solid #20d3d8  !important; }
   .site-blocks-table .btn {
     background: none !important;
     color: #000000;
@@ -697,11 +708,11 @@ textarea {
   border-radius: 10px !important; }
 
 .text-primary {
-  color: #3b5d50 !important; }
+  color: #20d3d8  !important; }
 
 .thankyou-icon {
   position: relative;
-  color: #3b5d50; }
+  color: #20d3d8 ; }
   .thankyou-icon:before {
     position: absolute;
     content: "";

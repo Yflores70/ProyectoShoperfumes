@@ -2,7 +2,19 @@
 {% load static %}
 {% block contenidoQueCambia %}
 <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Vista detalle del Producto</h1>
-    <p>Producto:{{productos.nombre}}, Precio:{{productos.precio}}</p>
+    <section class="bg0 p-t-75 p-b-120">
+        <div class="container">
+            <div class="row p-b-148">
+                <div class="col-md-7 col-lg-8">
+                    <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                        <h1>Vista detalle del Producto</h1>
+                        <p>Producto:{{productos.nombre}}</p>
+                        <p>Precio:{{productos.precio}}</p>
 
+                        <img src="{{ productos.imagen.url }}" alt="Producto Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

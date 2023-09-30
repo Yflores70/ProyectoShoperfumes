@@ -7,10 +7,18 @@ from .views import *
 urlpatterns = [
         path('', inicio, name='inicio'),
         #path('agrega-categoria/<nombre>', categoria),
+
+        path('lista-blogs', BlogList.as_view(), name='lista-blogs'),
+        path('detalle-blogs/<pk>', BlogDetail.as_view(), name='detalle-blogs'),
+        path('crea-blogs', BlogCreate.as_view(), name='crea-blogs'),
+         path('actualiza-blogs/<int:pk>/', BlogUpdate.as_view(), name='actualiza-blogs'),
+        path('elimina-blogs/<pk>', BlogDelete.as_view(), name='elimina-blogs'),
+
         path('agregar-categorias', agregacategoria, name='agregar-categorias'),
         path('lista-categoria/', lista_categorias, name='categorias'),
         path('productos', lista_productos, name='productos'),
         path('agregar-productos', agregarproducto, name='agregar-productos'),
+
         path('clientes', lista_clientes, name='clientes'),
         path('agregar-clientes', formulario, name='agregar-clientes'),
         path('busqueda-clientes', busquedacliente, name='busqueda-clientes'),
@@ -33,15 +41,12 @@ urlpatterns = [
         path('login', UsuarioLogin, name='login'),
         path('registro', UsuarioRegistro, name='registro'),
         path('logout', LogoutView.as_view(template_name='inicio.html'), name='logout'), #se dirige a inicio
+
         path('edita-perfil', EditarPerfil, name='edita-perfil'),
         path('agregar-avatar', AgregarAvatar, name='agregar-avatar'),
         path('acerca-de-mí', Acercademí, name='acerca-de-mí'),
         path('contacto', Escribenos, name='contacto'),
         path('blog', Blog, name='blog'),
+   
 
-        path('lista-blogs', BlogList.as_view(), name='lista-blogs'),
-        path('detalle-blogs/<pk>', BlogDetail.as_view(), name='detalle-blogs'),
-        path('crea-blogs', BlogCreate.as_view(), name='crea-blogs'),
-        path('actualiza-blogs/<pk>', BlogUpdate.as_view(), name='actualiza-blogs'),
-        path('elimina-blogs/<pk>', BlogDelete.as_view(), name='elimina-blogs'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

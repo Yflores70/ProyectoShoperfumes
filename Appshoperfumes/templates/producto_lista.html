@@ -2,23 +2,39 @@
 {% load static %}
 {% block contenidoQueCambia %}
 <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Lista de Productos</h1>
+        <section class="bg0 p-t-75 p-b-120">
+            <div class="container">
+                <div class="row p-b-148">
+                    <div class="col-md-7 col-lg-8">
+                        <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                            <h1>Lista de Productos</h1>
 
-    <ul>
-        
-        {% for producto in productos %}
+                            <ul>
+                                
+                                {% for producto in productos %}
 
-        <li>
-            <p> Nombre: {{producto.nombre}} </p>
-            <p>
-                <a href="{% url 'detalle-productos' producto.id %}">Ver</a>
-                <a href="{% url 'actualiza-productos' producto.id %}">Actualizar</a>
-                <a href="{% url 'elimina-productos' producto.id %}">Eliminar</a>
-            </p>
-        </li>
-        
-    {% endfor %}
-        
-</ul>
-<a href="{% url 'crea-productos'%}">Crear Producto</a>
+                                    <li>
+                                        <p> {{producto.nombre}} </p>
+                                        <img src="{{ producto.imagen.url }}" alt="Producto Image">
+                                            <button class="custom-button">
+                                                <a href="{% url 'detalle-productos' producto.id %}">Ver</a>
+                                            </button>
+                                            <button class="custom-button">
+                                                <a href="{% url 'actualiza-productos' producto.id %}">Actualizar</a>
+                                            </button>
+                                            <button class="custom-button">   
+                                            <a href="{% url 'elimina-productos' producto.id %}">Eliminar</a>
+                                            </button>
+                                        </p>
+                                    </li>
+                                
+                                {% endfor %}
+                                
+                            </ul>
+                            <a href="{% url 'crea-productos'%}">Crear Producto</a>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </section>
 {% endblock %}

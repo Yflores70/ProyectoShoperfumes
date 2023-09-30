@@ -18,17 +18,19 @@
 
                             <li>
                                 <p> Nombre: {{cliente.nombre}} </p>
-                                    <button>
-                                        <a href="{% url 'detalle-clientes' cliente.id %}">Ver</a>
-                                    </button>
+                                    <div class="button-group">
+                                        <button class="button-group">
+                                            <a href="{% url 'detalle-clientes' cliente.id %}">Ver</a>
+                                        </button>
 
-                                    <button>
-                                        <a href="{% url 'actualiza-clientes' cliente.id %}">Actualizar</a>
-                                    </button>
+                                        <button class="button-group">
+                                            <a href="{% url 'actualiza-clientes' cliente.id %}">Actualizar</a>
+                                        </button>
 
-                                    <form action= "{% url 'elimina-clientes' cliente.id %}" method="get">
-                                        <button type= "submit">Eliminar</button>
-                                    </form>
+                                        <form action= "{% url 'elimina-clientes' cliente.id %}" method="get" class="d-inline">
+                                            <button class="button-group" type= "submit">Eliminar</button>
+                                        </form>
+                                    </div>
                             </li>
                             
                         {% endfor %}

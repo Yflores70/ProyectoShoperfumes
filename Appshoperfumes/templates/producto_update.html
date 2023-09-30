@@ -2,13 +2,21 @@
 {% load static %}
 {% block contenidoQueCambia %}
 <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Crear Productos</h1>
-        <form action="{% url 'actualiza-productos' producto.id %}" method="post">{% csrf_token %}
+    <section class="bg0 p-t-75 p-b-120">
+        <div class="container">
+            <div class="row p-b-148">
+                <div class="col-md-7 col-lg-8">
+                    <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                        <h1>Actualizar el Producto</h1>
+                            <form action="{% url 'actualiza-productos' producto.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
 
-            {{form.as_table}}
+                                {{form.as_table}}
 
-            <button type="submit">Enviar</button>
-        </form>
-
-
+                                <button type="submit">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 {% endblock %}
