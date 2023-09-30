@@ -252,8 +252,9 @@ class ClienteDetail(LoginRequiredMixin,DetailView):
 
 class ClienteCreate(LoginRequiredMixin,CreateView):
     model = Cliente
+    template_name = 'cliente_form.html'
     success_url = '/app-shoperfumes/'
-    fields = ['nombre']
+    fields = ['nombre', 'correo', 'direccion']
 
 class ClienteUpdate(LoginRequiredMixin,UpdateView):
     model = Cliente

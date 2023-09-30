@@ -3,7 +3,7 @@
 {% block contenidoQueCambia %}
 <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
     <h1>Crear Clientes</h1>
-        <form method="post">
+        <form action="{% url 'crea-clientes' %}"method="post">
 
             {% csrf_token %}
             {{form.as_table}}
